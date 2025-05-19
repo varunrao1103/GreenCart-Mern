@@ -126,26 +126,40 @@ const Cart = () => {
             key={index}
             className="grid grid-cols-2 md:grid-cols-[2fr_1fr_1fr] text-gray-500 items-center text-sm md:text-base font-medium py-2 md:py-3 border-b border-gray-300"
           >
-            <div className="flex items-center justify-between md:justify-start gap-2 md:gap-6">
-              <div
-                onClick={() => {
-                  navigate(
-                    `/products/${product.category.toLowerCase()}/${product._id}`
-                  );
-                  scrollTo(0, 0);
-                }}
-                className="cursor-pointer w-16 h-16 md:w-24 md:h-24 flex items-center justify-center border border-gray-300 rounded"
-              >
-                <img
-                  className="max-w-full h-full object-cover"
-                  src={product.image[0]}
-                  alt={product.name}
-                />
+            <div className="relative flex md:justify-start gap-2 md:gap-6">
+              <div className="md:block hidden">
+                {' '}
+                {/* Hide image on mobile, show on desktop */}
+                <div
+                  onClick={() => {
+                    navigate(
+                      `/products/${product.category.toLowerCase()}/${
+                        product._id
+                      }`
+                    );
+                    scrollTo(0, 0);
+                  }}
+                  className="cursor-pointer w-16 h-16 md:w-24 md:h-24 flex items-center justify-center border border-gray-300 rounded"
+                >
+                  <img
+                    className="max-w-full h-full object-cover"
+                    src={product.image[0]}
+                    alt={product.name}
+                  />
+                </div>
               </div>
-              <div>
-                <p className="font-semibold text-sm md:text-base">
-                  {product.name}
-                </p>
+              <div className="flex-1">
+                <div className="flex justify-between items-start">
+                  <p className="font-semibold text-sm md:text-base">
+                    {product.name}
+                  </p>
+                  <button
+                    onClick={() => removeFromCart(product._id)}
+                    className="text-xs text-red-500 border border-red-500 rounded px-2 py-0.5 md:hidden" // Added md:hidden to hide on larger screens
+                  >
+                    Remove
+                  </button>
+                </div>
                 <div className="font-normal text-gray-500/70 text-xs md:text-sm">
                   <p>
                     Weight: <span>{product.weight || 'N/A'}</span>
@@ -172,12 +186,6 @@ const Cart = () => {
                   </div>
                 </div>
               </div>
-              <button
-                onClick={() => removeFromCart(product._id)}
-                className="cursor-pointer ml-auto md:hidden text-xs text-red-500 border border-red-500 rounded px-2 py-0.5"
-              >
-                Remove
-              </button>
             </div>
             <p className="text-right md:text-center self-center">
               {currency}
