@@ -123,7 +123,7 @@ const NavBar = () => {
             />
             <ul className="hidden group-hover:block absolute top-10 right-0 bg-white shadow border border-gray-200 py-2.5 w-30 rounded-md text-sm z-40">
               <li
-                onClick={() => navigate('my-orders')}
+                onClick={() => navigate('/my-orders')}
                 className="p-1.5 pl-3 hover:bg-primary/10 cursor-pointer"
               >
                 My orders
@@ -180,7 +180,7 @@ const NavBar = () => {
             All Products
           </NavLink>
           {user && (
-            <NavLink to="/orders" onClick={() => setOpen(!open)}>
+            <NavLink to="/my-orders" onClick={() => setOpen(!open)}>
               My Orders
             </NavLink>
           )}
