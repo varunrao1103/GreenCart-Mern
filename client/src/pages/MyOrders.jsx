@@ -28,6 +28,8 @@ const MyOrders = () => {
   return (
     <div className="mt-8 pb-8 md:mt-16 md:pb-16">
       <div className="flex flex-col items-start w-full mb-6 md:mb-8 px-4 md:px-0">
+        {' '}
+        {/* Changed md:items-end to md:items-start */}
         <p className="text-xl font-semibold uppercase md:text-2xl">My Orders</p>
         <div className="w-12 h-0.5 bg-primary rounded-full md:w-16"></div>
       </div>
